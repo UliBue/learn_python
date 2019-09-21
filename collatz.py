@@ -1,8 +1,29 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import sys
+
+print "-----------------------------------------"
+print " Testen der Collatz'schen Vermutung"
+print"------------------------------------------\n"
+print "Bitte geben sie die Testgrenze ein: "
+
+number = None
+while number is None:
+    line = sys.stdin.readline()
+    if line=='':
+        print "Eingabeende"
+        break
+    line=line.strip()
+    if not line.isdigit():
+        print "Bitte geben sie eine Zahl ein!"
+        continue
+    number=int(line)
+else:
+    print "OK, ich teste bis {}.\n".format(number)
+
 i=1
 m=0
-while i<=100:
+while i<=number:
     r=0
     n=i
     while n!=1:
@@ -19,4 +40,4 @@ while i<=100:
     i+=1
     if m<r:
         m=r         # neue laengste Runde
-print("Laengste Runde hatte {} Iterationen.".format(m))
+print("\nLaengste Runde hatte {} Iterationen.".format(m))
